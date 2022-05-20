@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\PokemonPocket.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\PokemonPocket.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\PokemonPocket.csproj",
+        "projectName": "PokemonPocket",
+        "projectPath": "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\PokemonPocket.csproj",
+        "packagesPath": "C:\\Users\\weihe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\weihe\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "netcoreapp5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "netcoreapp5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
