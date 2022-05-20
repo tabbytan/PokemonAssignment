@@ -8,8 +8,7 @@ namespace PokemonPocket
     {
         static void option1()
         {
-            int hp_int;
-            int exp_int;
+            int hp_int = -1;
             bool setname = false;
             var pokemon = new List<string>();
             pokemon.Add("pikachu");
@@ -17,7 +16,6 @@ namespace PokemonPocket
             pokemon.Add("charmander");
             var name = string.Empty;
             string hp;
-            string exp;
             Console.WriteLine("U have reached option1");
 
             while (!setname)
@@ -32,20 +30,19 @@ namespace PokemonPocket
                     }
                 }
             }
-            do
+            // do
+            // {
+            //     Console.WriteLine("Enter Pokemon's HP: ");
+            //     hp = Console.ReadLine();
+
+            // } while (!int.TryParse(hp, out hp_int));
+
+            while (hp_int < 0)
             {
-                Console.WriteLine("Enter Pokemon's HP: ");
+                Console.WriteLine("Enter Pokemon HP: ");
                 hp = Console.ReadLine();
-
-            } while (!int.TryParse(hp, out hp_int) && hp_int >= 0);
-
-            do
-            {
-                Console.WriteLine("Enter Pokemon's Exp: ");
-                exp = Console.ReadLine();
-
-            } while (!int.TryParse(exp, out exp_int) && hp_int >= 0);
-
+                int.TryParse(hp, out hp_int);
+            }
 
 
 

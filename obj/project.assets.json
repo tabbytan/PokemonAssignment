@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\PokemonPocket.csproj",
+      "projectUniqueName": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj",
       "projectName": "PokemonPocket",
-      "projectPath": "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\PokemonPocket.csproj",
+      "projectPath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj",
       "packagesPath": "C:\\Users\\weihe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\weihe\\OneDrive\\school work stuff\\advanced programming\\PokemonPocket\\obj\\",
+      "outputPath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\weihe\\AppData\\Roaming\\NuGet\\NuGet.Config"
