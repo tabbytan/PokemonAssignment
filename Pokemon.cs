@@ -16,7 +16,7 @@ namespace PokemonPocket
             this.EvolveTo = evolveTo;
         }
     }
-    public class Pokemon
+    public partial class Pokemon
     {
         public string Name { get; set; }
         public int Exp { get; set; }
@@ -28,11 +28,9 @@ namespace PokemonPocket
             this.Hp = hp;
         }
     }
-    public class Pikachu : Pokemon
-    {
-        public string skill = "Lightning bolt";
-        public Pikachu(string name, int exp, int hp) : base(name, exp, hp) { }
-    }
+
+
+
 
 
 

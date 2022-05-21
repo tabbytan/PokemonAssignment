@@ -6,9 +6,11 @@ namespace PokemonPocket
 {
     class Program
     {
+        static List<Pokemon> pokemonlist = new List<Pokemon>();
         static void option1()
         {
             int hp_int = -1;
+            int exp_int = -1;
             bool setname = false;
             var pokemon = new List<string>();
             pokemon.Add("pikachu");
@@ -16,19 +18,27 @@ namespace PokemonPocket
             pokemon.Add("charmander");
             var name = string.Empty;
             string hp;
+            string exp;
             Console.WriteLine("U have reached option1");
 
             while (!setname)
             {
                 Console.WriteLine("Enter PokeMon's Name: ");
-                name = Console.ReadLine();
+                name = Console.ReadLine().ToLower();
                 foreach (var p in pokemon)
                 {
                     if (name == p)
                     {
                         setname = true;
+                        break;
+
                     }
                 }
+                if (!setname)
+                {
+                    Console.WriteLine("This isnt a valid pokemon");
+                }
+
             }
             // do
             // {
@@ -39,9 +49,72 @@ namespace PokemonPocket
 
             while (hp_int < 0)
             {
+                // Console.WriteLine(hp_int);
                 Console.WriteLine("Enter Pokemon HP: ");
                 hp = Console.ReadLine();
-                int.TryParse(hp, out hp_int);
+                int output;
+                bool result = int.TryParse(hp, out output);
+                if (result)
+                {
+                    hp_int = Convert.ToInt32(hp);
+                    {
+                        if (hp_int < 0)
+                        {
+                            Console.WriteLine("Cannot be less than 0");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("this isnt a valid input");
+                }
+                // Console.WriteLine(hp_int);
+            }
+            while (exp_int < 0)
+            {
+                Console.WriteLine("Enter Pokemon EXP: ");
+                exp = Console.ReadLine();
+                int output;
+                bool result = int.TryParse(exp, out output);
+                if (result)
+                {
+                    exp_int = Convert.ToInt32(exp);
+                    {
+                        if (exp_int < 0)
+                        {
+                            Console.WriteLine("Cannot be less than 0");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("this isnt a valid input");
+                }
+            }
+
+            if (name == "pikachu")
+            {
+
+                Pikachu Pikachu = new Pikachu(name, exp_int, hp_int);
+                Console.WriteLine("new Pikachu Has been created");
+                Console.WriteLine(Pikachu.Name + Pikachu.Exp + Pikachu.Hp);
+                pokemonlist.Add(Pikachu);
+
+
+            }
+            else if (name == "eevee")
+            {
+                Eevee Eevee = new Eevee(name, exp_int, hp_int);
+                Console.WriteLine("new Eevee Has been created");
+                Console.WriteLine(Eevee.Name + Eevee.Exp + Eevee.Hp);
+                pokemonlist.Add(Eevee);
+            }
+            else if (name == "charmander")
+            {
+                Charmander Charmander = new Charmander(name, exp_int, hp_int);
+                Console.WriteLine("new Charmander has been created");
+                Console.WriteLine(Charmander.Name + Charmander.Exp + Charmander.Hp);
+                pokemonlist.Add(Charmander);
             }
 
 
@@ -50,6 +123,13 @@ namespace PokemonPocket
         static void option2()
         {
             Console.WriteLine("U have reached option2");
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            foreach (var p in pokemonlist.OrderBy(p => p.Hp))
+            {
+                Console.WriteLine($"Name: {p.Name}\nHealth: {p.Hp}\nExp: {p.Exp} ");
+                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            }
+
         }
         static void option3()
         {
@@ -61,6 +141,7 @@ namespace PokemonPocket
         }
         static void Main(string[] args)
         {
+
             //PokemonMaster list for checking pokemon evolution availability.    
             List<PokemonMaster> pokemonMasters = new List<PokemonMaster>(){
             new PokemonMaster("Pikachu", 2, "Raichu"),
@@ -72,6 +153,7 @@ namespace PokemonPocket
             bool mainmenuloop = true;
             while (mainmenuloop)
             {
+
                 Console.WriteLine("***************************************************\nWelcome to pokemon pocket App\n***************************************************");
                 Console.WriteLine("(1)Add Pokemon to my pocket");
                 Console.WriteLine("(2)List pokemon(s) in my pocket");
@@ -81,27 +163,27 @@ namespace PokemonPocket
                 var input = Console.ReadLine().Trim();
                 if (input == "1")
                 {
-                    mainmenuloop = false;
+
                     option1();
                 }
                 else if (input == "2")
                 {
-                    mainmenuloop = false;
+
                     option2();
                 }
                 else if (input == "3")
                 {
-                    mainmenuloop = false;
+
                     option3();
                 }
                 else if (input == "4")
                 {
-                    mainmenuloop = false;
+
                     option4();
                 }
                 else if (input.ToLower() == "q")
                 {
-                    mainmenuloop = false;
+
                     Environment.Exit(0);
                     Console.Clear();
                 }
