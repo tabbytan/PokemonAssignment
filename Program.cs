@@ -7,12 +7,20 @@ namespace PokemonPocket
     class Program
     {
         static List<Pokemon> pokemonlist = new List<Pokemon>();
+        static List<string> pokemon = new List<string>();
+        static List<PokemonMaster> pokemonMasters = new List<PokemonMaster>(){
+            new PokemonMaster("Pikachu", 2, "Raichu"),
+            new PokemonMaster("Eevee", 3, "Flareon"),
+            new PokemonMaster("Charmander", 1, "Charmeleon")
+            };
+        static int pikachuNo;
+        static int eeveeNo;
+        static int charmanderNo;
         static void option1()
         {
             int hp_int = -1;
             int exp_int = -1;
             bool setname = false;
-            var pokemon = new List<string>();
             pokemon.Add("pikachu");
             pokemon.Add("eevee");
             pokemon.Add("charmander");
@@ -99,6 +107,8 @@ namespace PokemonPocket
                 Console.WriteLine("new Pikachu Has been created");
                 Console.WriteLine(Pikachu.Name + Pikachu.Exp + Pikachu.Hp);
                 pokemonlist.Add(Pikachu);
+                pikachuNo += 1;
+
 
 
             }
@@ -108,6 +118,7 @@ namespace PokemonPocket
                 Console.WriteLine("new Eevee Has been created");
                 Console.WriteLine(Eevee.Name + Eevee.Exp + Eevee.Hp);
                 pokemonlist.Add(Eevee);
+                eeveeNo += 1;
             }
             else if (name == "charmander")
             {
@@ -115,6 +126,7 @@ namespace PokemonPocket
                 Console.WriteLine("new Charmander has been created");
                 Console.WriteLine(Charmander.Name + Charmander.Exp + Charmander.Hp);
                 pokemonlist.Add(Charmander);
+                charmanderNo += 1;
             }
 
 
@@ -126,28 +138,119 @@ namespace PokemonPocket
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             foreach (var p in pokemonlist.OrderBy(p => p.Hp))
             {
-                Console.WriteLine($"Name: {p.Name}\nHealth: {p.Hp}\nExp: {p.Exp} ");
+                Console.WriteLine($"Name: {p.Name}\nHealth: {p.Hp}\nExp: {p.Exp} \n{p.Skill()}");
                 Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             }
 
         }
-        static void option3()
-        {
-            Console.WriteLine("U have reached option3");
-        }
         static void option4()
         {
+
+            Console.WriteLine("U have reached option3");
+            Console.WriteLine($"pikachu - {pikachuNo}\n eevee - {eeveeNo}\n charmander - {charmanderNo}");
+            foreach (var n in pokemonMasters)
+            {
+                if (n.Name == "Eevee" && n.NoToEvolve <= eeveeNo)
+                {
+                    // Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                    for (int a = 0; a < n.NoToEvolve - 1; a++)
+                    {
+                        for (int i = 0; i < pokemonlist.Count; i++)
+                        {
+                            if (pokemonlist[i].Name == "eevee")
+                            {
+                                pokemonlist.RemoveAt(i);
+                            }
+                        }
+                        for (int i = 0; i < pokemonlist.Count; i++)
+                        {
+                            if (pokemonlist[i].Name == "eevee")
+                            {
+                                pokemonlist[i].Name = "Flareon";
+                                pokemonlist[i].Exp = 0;
+                                pokemonlist[i].Hp = 0;
+                                eeveeNo = 0;
+                            }
+                        }
+                    }
+
+                }
+                if (n.Name == "Pikachu" && n.NoToEvolve <= pikachuNo)
+                {
+                    for (int a = 0; a < n.NoToEvolve - 1; a++)
+                    {
+                        for (int i = 0; i < pokemonlist.Count; i++)
+                        {
+                            if (pokemonlist[i].Name == "pikachu")
+                            {
+                                pokemonlist.RemoveAt(i);
+                            }
+                        }
+                        for (int i = 0; i < pokemonlist.Count; i++)
+                        {
+                            if (pokemonlist[i].Name == "pikachu")
+                            {
+                                pokemonlist[i].Name = "Raichu";
+                                pokemonlist[i].Exp = 0;
+                                pokemonlist[i].Hp = 0;
+                                pikachuNo = 0;
+                            }
+                        }
+                    }
+                }
+                if (n.Name == "Charmander" && n.NoToEvolve <= charmanderNo)
+                {
+                    for (int a = 0; a < n.NoToEvolve - 1; a++)
+                    {
+                        for (int i = 0; i < pokemonlist.Count; i++)
+                        {
+                            if (pokemonlist[i].Name == "charmander")
+                            {
+                                pokemonlist.RemoveAt(i);
+                            }
+                        }
+                        for (int i = 0; i < pokemonlist.Count; i++)
+                        {
+                            if (pokemonlist[i].Name == "charmander")
+                            {
+                                pokemonlist[i].Name = "Charmeleon";
+                                pokemonlist[i].Exp = 0;
+                                pokemonlist[i].Hp = 0;
+                                charmanderNo = 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+        static void option3()
+        {
             Console.WriteLine("U have reached option4");
+            foreach (var n in pokemonMasters)
+            {
+                if (n.Name == "Eevee" && n.NoToEvolve <= eeveeNo)
+                {
+                    Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                }
+                if (n.Name == "Pikachu" && n.NoToEvolve <= pikachuNo)
+                {
+                    Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                }
+                if (n.Name == "Charmander" && n.NoToEvolve <= charmanderNo)
+                {
+                    Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                }
+            }
+
         }
         static void Main(string[] args)
         {
 
             //PokemonMaster list for checking pokemon evolution availability.    
-            List<PokemonMaster> pokemonMasters = new List<PokemonMaster>(){
-            new PokemonMaster("Pikachu", 2, "Raichu"),
-            new PokemonMaster("Eevee", 3, "Flareon"),
-            new PokemonMaster("Charmander", 1, "Charmeleon")
-            };
+
             //Use "Environment.Exit(0);" if you want to implement an exit of the console program
             //Start your assignment 1 requirements below.
             bool mainmenuloop = true;

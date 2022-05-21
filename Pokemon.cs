@@ -15,6 +15,7 @@ namespace PokemonPocket
             this.NoToEvolve = noToEvolve;
             this.EvolveTo = evolveTo;
         }
+
     }
     public partial class Pokemon
     {
@@ -26,6 +27,10 @@ namespace PokemonPocket
             this.Name = name;
             this.Exp = exp;
             this.Hp = hp;
+        }
+        public virtual string Skill()
+        {
+            return "";
         }
     }
 
