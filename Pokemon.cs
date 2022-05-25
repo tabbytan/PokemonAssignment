@@ -19,6 +19,7 @@ namespace PokemonPocket
     }
     public partial class Pokemon
     {
+        public int PokemonId { get; set; }
         public string Name { get; set; }
         public int Exp { get; set; }
         public int Hp { get; set; }

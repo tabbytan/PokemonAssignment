@@ -5901,14 +5901,14 @@
         "C:\\Users\\weihe\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp5.0"
+        "net5.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
-          "targetAlias": "netcoreapp5.0",
+          "targetAlias": "net5.0",
           "projectReferences": {}
         }
       },
@@ -5920,7 +5920,7 @@
     },
     "frameworks": {
       "net5.0": {
-        "targetAlias": "netcoreapp5.0",
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
