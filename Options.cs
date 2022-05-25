@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PokemonPocket
 
@@ -151,92 +153,113 @@ namespace PokemonPocket
             {
                 if (n.Name == "Eevee" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "eevee").Count())
                 {
-                    // Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
-
-                    for (int a = 0; a < n.NoToEvolve - 1; a++)
+                    Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                    var y = pokemonContext.Pokemons.First(x => x.Name.ToLower() == "eevee");
+                    y.Name = "Flareon";
+                    y.Exp = 0;
+                    y.Hp = 0;
+                    pokemonContext.Update(y);
+                    pokemonContext.SaveChanges();
+                    for (int i = 0; i < n.NoToEvolve; i++)
                     {
-                        for (int i = 0; i < pokemonContext.Pokemons.Count(); i++)
-                        {
-                            if (pokemonContext[i].Name == "eevee")
-                            {
-                                pokemonlist.RemoveAt(i);
-                            }
-                        }
-                        for (int i = 0; i < pokemonlist.Count; i++)
-                        {
-                            if (pokemonlist[i].Name == "eevee")
-                            {
-                                pokemonlist[i].Name = "Flareon";
-                                pokemonlist[i].Exp = 0;
-                                pokemonlist[i].Hp = 0;
-                            }
-                        }
+                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.Name.ToLower() == "eevee"));
                     }
-
+                    pokemonContext.SaveChanges();
                 }
-                if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "pikachu").Count())
+                else if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "pikachu").Count())
                 {
-                    for (int a = 0; a < n.NoToEvolve - 1; a++)
+                    Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                    var y = pokemonContext.Pokemons.First(x => x.Name.ToLower() == "pikachu");
+                    y.Name = "Raichu";
+                    y.Exp = 0;
+                    y.Hp = 0;
+                    pokemonContext.Update(y);
+                    pokemonContext.SaveChanges();
+                    for (int i = 0; i < n.NoToEvolve; i++)
                     {
-                        for (int i = 0; i < pokemonlist.Count; i++)
-                        {
-                            if (pokemonlist[i].Name == "pikachu")
-                            {
-                                pokemonlist.RemoveAt(i);
-                            }
-                        }
-                        for (int i = 0; i < pokemonlist.Count; i++)
-                        {
-                            if (pokemonlist[i].Name == "pikachu")
-                            {
-                                pokemonlist[i].Name = "Raichu";
-                                pokemonlist[i].Exp = 0;
-                                pokemonlist[i].Hp = 0;
-                            }
-                        }
+                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.Name.ToLower() == "pikachu"));
                     }
+                    pokemonContext.SaveChanges();
                 }
-                if (n.Name == "Charmander" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "charmander").Count())
+                else if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "charmander").Count())
                 {
-                    for (int a = 0; a < n.NoToEvolve - 1; a++)
+                    Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
+                    var y = pokemonContext.Pokemons.First(x => x.Name.ToLower() == "charmander");
+                    y.Name = "Charmeleon";
+                    y.Exp = 0;
+                    y.Hp = 0;
+                    pokemonContext.Update(y);
+                    pokemonContext.SaveChanges();
+                    for (int i = 0; i < n.NoToEvolve; i++)
                     {
-                        for (int i = 0; i < pokemonlist.Count; i++)
-                        {
-                            if (pokemonlist[i].Name == "charmander")
-                            {
-                                pokemonlist.RemoveAt(i);
-                            }
-                        }
-                        for (int i = 0; i < pokemonlist.Count; i++)
-                        {
-                            if (pokemonlist[i].Name == "charmander")
-                            {
-                                pokemonlist[i].Name = "Charmeleon";
-                                pokemonlist[i].Exp = 0;
-                                pokemonlist[i].Hp = 0;
-                            }
-                        }
+                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.Name.ToLower() == "charmander"));
                     }
+                    pokemonContext.SaveChanges();
                 }
+                //         if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "pikachu").Count())
+                //         {
+                //             for (int a = 0; a < n.NoToEvolve - 1; a++)
+                //             {
+                //                 for (int i = 0; i < pokemonlist.Count; i++)
+                //                 {
+                //                     if (pokemonlist[i].Name == "pikachu")
+                //                     {
+                //                         pokemonlist.RemoveAt(i);
+                //                     }
+                //                 }
+                //                 for (int i = 0; i < pokemonlist.Count; i++)
+                //                 {
+                //                     if (pokemonlist[i].Name == "pikachu")
+                //                     {
+                //                         pokemonlist[i].Name = "Raichu";
+                //                         pokemonlist[i].Exp = 0;
+                //                         pokemonlist[i].Hp = 0;
+                //                     }
+                //                 }
+                //             }
+                //         }
+                //         if (n.Name == "Charmander" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "charmander").Count())
+                //         {
+                //             for (int a = 0; a < n.NoToEvolve - 1; a++)
+                //             {
+                //                 for (int i = 0; i < pokemonlist.Count; i++)
+                //                 {
+                //                     if (pokemonlist[i].Name == "charmander")
+                //                     {
+                //                         pokemonlist.RemoveAt(i);
+                //                     }
+                //                 }
+                //                 for (int i = 0; i < pokemonlist.Count; i++)
+                //                 {
+                //                     if (pokemonlist[i].Name == "charmander")
+                //                     {
+                //                         pokemonlist[i].Name = "Charmeleon";
+                //                         pokemonlist[i].Exp = 0;
+                //                         pokemonlist[i].Hp = 0;
+                //                     }
+                //                 }
+                //             }
+                //         }
+                //     }
+                // 
             }
-
-
-
         }
-        public void option3(List<string> pokemon, List<Pokemon> pokemonlist, List<PokemonMaster> pokemonMasters)
+
+
+        public void option3(List<string> pokemon, MyDbContext pokemonContext, List<PokemonMaster> pokemonMasters)
         {
             Console.WriteLine("U have reached option4");
             foreach (var n in pokemonMasters)
             {
-                if (n.Name == "Eevee" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "eevee").Count())
+                if (n.Name == "Eevee" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "eevee").Count())
                 {
                     Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
                 }
-                if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "pikachu").Count())
+                if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "pikachu").Count())
                 {
                     Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
                 }
-                if (n.Name == "Charmander" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "charmander").Count())
+                if (n.Name == "Charmander" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "charmander").Count())
                 {
                     Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
                 }
