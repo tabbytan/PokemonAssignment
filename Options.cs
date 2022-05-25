@@ -146,7 +146,7 @@ namespace PokemonPocket
         {
 
             Console.WriteLine("U have reached option4");
-            Console.WriteLine($"pikachu - {pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "pikachu").Count()}\n eevee - {pokemonlist.Where(x => x.Name.ToLower() == "eevee").Count()}\n charmander - {pokemonlist.Where(x => x.Name.ToLower() == "charmander").Count()}");
+            Console.WriteLine($"pikachu - {pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "pikachu").Count()}\n eevee - {pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "eevee").Count()}\n charmander - {pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "charmander").Count()}");
             foreach (var n in pokemonMasters)
             {
                 if (n.Name == "Eevee" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "eevee").Count())
@@ -157,7 +157,7 @@ namespace PokemonPocket
                     {
                         for (int i = 0; i < pokemonContext.Pokemons.Count(); i++)
                         {
-                            if (pokemonlist[i].Name == "eevee")
+                            if (pokemonContext[i].Name == "eevee")
                             {
                                 pokemonlist.RemoveAt(i);
                             }

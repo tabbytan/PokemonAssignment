@@ -53,7 +53,7 @@ namespace PokemonPocket
                 else if (input == "4")
                 {
 
-                    options.option4(pokemon, pokemonlist, pokemonMasters);
+                    options.option4(pokemon, pokemonContext, pokemonMasters);
                 }
                 else if (input.ToLower() == "q")
                 {
