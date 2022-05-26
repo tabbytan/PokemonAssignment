@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "NR6oPY1ExpIQ2rQDHdIm1YsFPXj5trY/ZLebZUnI/NNXC7mdxo6hLj1nAhiqDdnZlkRvrvQOgdzFMv3lCyiWFA==",
+=======
+  "dgSpecHash": "3m2YyUh+ZOtH1XRdU9Unyjj6ssyGK2CIjHF5LH9NYg5r3DYg5FajljSpIPhZel+XZf9vQrVlFHA5z5CAefaRzg==",
+>>>>>>> parent of 042f264 (working (no special feature yet))
   "success": true,
   "projectFilePath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj",
   "expectedPackageFiles": [
