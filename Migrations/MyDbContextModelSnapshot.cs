@@ -21,6 +21,9 @@ namespace PokemonPocket.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Attack")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Exp")
                         .HasColumnType("INTEGER");
 
@@ -29,6 +32,9 @@ namespace PokemonPocket.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("workingHp")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("PokemonId");
 

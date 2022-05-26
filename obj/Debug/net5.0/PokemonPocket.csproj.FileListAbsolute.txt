@@ -3,7 +3,6 @@ C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\PokemonPocket
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\PokemonPocket.runtimeconfig.json
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\PokemonPocket.runtimeconfig.dev.json
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\PokemonPocket.dll
-C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\ref\PokemonPocket.dll
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\PokemonPocket.pdb
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\Humanizer.dll
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
@@ -73,3 +72,4 @@ C:\Users\weihe\Documents\GitHub\PokemonAssignment\obj\Debug\net5.0\PokemonPocket
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\obj\Debug\net5.0\ref\PokemonPocket.dll
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\obj\Debug\net5.0\PokemonPocket.pdb
 C:\Users\weihe\Documents\GitHub\PokemonAssignment\obj\Debug\net5.0\PokemonPocket.genruntimeconfig.cache
+C:\Users\weihe\Documents\GitHub\PokemonAssignment\obj\Debug\net5.0\refint\PokemonPocket.dll

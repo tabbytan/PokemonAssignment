@@ -32,6 +32,7 @@ namespace PokemonPocket
                 Console.WriteLine("(2)List pokemon(s) in my pocket");
                 Console.WriteLine("(3)Check if i can evolve pokemon");
                 Console.WriteLine("(4)evolve pokemon");
+                Console.WriteLine("(5)Enter AI fight");
 
                 Console.Write("Please only enter [1,2,3,4] or Q to quit: ");
                 var input = Console.ReadLine().Trim();
@@ -39,7 +40,7 @@ namespace PokemonPocket
                 if (input == "1")
                 {
 
-                    options.option1(pokemon, pokemonContext);
+                    options.option1(pokemon, pokemonContext, pokemonMasters);
                 }
                 else if (input == "2")
                 {
@@ -54,6 +55,10 @@ namespace PokemonPocket
                 {
 
                     options.option4(pokemon, pokemonContext, pokemonMasters);
+                }
+                else if (input == "5")
+                {
+                    options.option5(pokemon, pokemonContext, pokemonMasters);
                 }
                 else if (input.ToLower() == "q")
                 {
