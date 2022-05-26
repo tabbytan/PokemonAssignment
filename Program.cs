@@ -48,7 +48,7 @@ namespace PokemonPocket
                 else if (input == "3")
                 {
 
-                    options.option3(pokemon, pokemonContext, pokemonMasters);
+                    options.option3(pokemon, pokemonlist, pokemonMasters);
                 }
                 else if (input == "4")
                 {
