@@ -13,10 +13,8 @@ namespace PokemonPocket.Migrations
                     PokemonId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Hp = table.Column<int>(type: "INTEGER", nullable: false),
                     Exp = table.Column<int>(type: "INTEGER", nullable: false),
-                    workingHp = table.Column<int>(type: "INTEGER", nullable: false),
-                    Attack = table.Column<int>(type: "INTEGER", nullable: false)
+                    Hp = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
