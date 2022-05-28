@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PokemonPocket
 {
-    public class Pikachu : Pokemon
+    public partial class Pikachu : Pokemon
     {
         public Pikachu(string name, int exp, int hp) : base(name, exp, hp) { }
         public override string Skill()

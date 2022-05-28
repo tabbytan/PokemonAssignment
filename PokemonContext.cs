@@ -19,6 +19,12 @@ namespace PokemonPocket
         {
             // Map table names
             modelBuilder.Entity<Pokemon>();
+            // this doesnt work..
+            // .HasIndex(p => new { p.Name })
+            // .HasDatabaseName("nameindex").IsUnique();
+            modelBuilder.Entity<Eevee>();
+            modelBuilder.Entity<Charmander>();
+            modelBuilder.Entity<Pikachu>();
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj": {}
+    "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\.vscode\\PokemonAssignment\\PokemonPocket.csproj": {}
   },
   "projects": {
-    "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj": {
+    "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\.vscode\\PokemonAssignment\\PokemonPocket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj",
+        "projectUniqueName": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\.vscode\\PokemonAssignment\\PokemonPocket.csproj",
         "projectName": "PokemonPocket",
-        "projectPath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\PokemonPocket.csproj",
+        "projectPath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\.vscode\\PokemonAssignment\\PokemonPocket.csproj",
         "packagesPath": "C:\\Users\\weihe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\obj\\",
+        "outputPath": "C:\\Users\\weihe\\Documents\\GitHub\\PokemonAssignment\\.vscode\\PokemonAssignment\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\weihe\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -76,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
