@@ -268,6 +268,7 @@ namespace PokemonPocket
         }
         public virtual void option5(List<string> pokemon, MyDbContext pokemonContext, List<PokemonMaster> pokemonMasters)
         {
+            Potion potion = new Potion(5);
             sortbyid(pokemon, pokemonContext, pokemonMasters);
             if (!pokemonContext.Pokemons.Any())
             {
@@ -283,7 +284,7 @@ namespace PokemonPocket
                     Pikachu aipokemon = new Pikachu("AI PIKACHU", 0, pokemontype.Next(3, 5));
                     Console.WriteLine($"FIGHTING {aipokemon.Name}");
                     Pokemon userpokemon = setpokemon(pokemon, pokemonContext, pokemonMasters, aipokemon);
-                    fightloop(aipokemon, userpokemon, pokemonContext);
+                    fight(aipokemon, userpokemon, pokemonContext, potion);
 
                 }
                 else if (randompokemon == 2)
@@ -291,7 +292,7 @@ namespace PokemonPocket
                     Charmander aipokemon = new Charmander("AI CHARMANDER", 0, pokemontype.Next(3, 5));
                     Console.WriteLine($"FIGHTING {aipokemon.Name}");
                     Pokemon userpokemon = setpokemon(pokemon, pokemonContext, pokemonMasters, aipokemon);
-                    fightloop(aipokemon, userpokemon, pokemonContext);
+                    fight(aipokemon, userpokemon, pokemonContext, potion);
 
 
                 }
@@ -300,7 +301,7 @@ namespace PokemonPocket
                     Eevee aipokemon = new Eevee("AI EEVEE", pokemontype.Next(1, 3), pokemontype.Next(20, 25));
                     Console.WriteLine($"FIGHTING {aipokemon.Name}");
                     Pokemon userpokemon = setpokemon(pokemon, pokemonContext, pokemonMasters, aipokemon);
-                    fightloop(aipokemon, userpokemon, pokemonContext);
+                    fight(aipokemon, userpokemon, pokemonContext, potion);
 
                 }
             }
@@ -360,7 +361,7 @@ namespace PokemonPocket
             else
             {
                 Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-                foreach (var p in pokemonContext.Pokemons.OrderBy(p => p.Name))
+                foreach (var p in pokemonContext.Pokemons.OrderBy(p => p.Hp))
                 {
                     Console.WriteLine($"{p.PokemonId}.\nName: {p.Name}\nHealth: {p.workingHp}/{p.Hp}\nExp: {p.Exp}\nAttack: {p.Attack} \n{p.Skill()}");
                     Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -368,11 +369,41 @@ namespace PokemonPocket
             }
 
         }
-
-
-
-        public void fight(Pokemon aipokemon, Pokemon userpokemon)
+        public void fight(Pokemon aipokemon, Pokemon userpokemon, MyDbContext pokemonContext, Potion potion)
         {
+
+            bool battle = true;
+            while (battle == true)
+            {
+                int choice = 0;
+                do
+                {
+                    choice = choicephase(aipokemon, userpokemon, pokemonContext, potion);
+                } while (choice == 0);
+                switch (choice)
+                {
+                    case 1:
+                        fightphase(aipokemon, userpokemon, pokemonContext);
+                        aifightphase(aipokemon, userpokemon, pokemonContext);
+                        battle = checkphase(aipokemon, userpokemon, pokemonContext);
+                        break;
+                    case 2:
+                        aifightphase(aipokemon, userpokemon, pokemonContext);
+                        battle = checkphase(aipokemon, userpokemon, pokemonContext);
+                        break;
+                    case 3:
+                        battle = false;
+                        break;
+                }
+
+            }
+            Console.WriteLine("battle is over");
+
+        }
+
+        public int choicephase(Pokemon aipokemon, Pokemon userpokemon, MyDbContext pokemonContext, Potion potion)
+        {
+
             string choice;
             int result;
             bool isValid = true;
@@ -388,31 +419,95 @@ namespace PokemonPocket
                     choice = Console.ReadLine().Trim();
 
                 } while (!int.TryParse(choice, out result));
-
                 switch (result)
                 {
+
                     case 1:
-
-                        aipokemon.workingHp -= userpokemon.Attack;
-                        Console.WriteLine($"{userpokemon.Name} has {userpokemon.workingHp}/{userpokemon.Hp} left");
-                        isValid = false;
-                        break;
+                        return 1;
                     case 2:
-                        isValid = false;
-                        break;
+                        if (potion.HpPotion > 0)
+                        {
+                            potion.HpPotion -= 1;
+                            userpokemon.workingHp += 10;
+                            if (userpokemon.workingHp > userpokemon.Hp)
+                            {
+                                userpokemon.workingHp = userpokemon.Hp;
+                            }
+                            Console.WriteLine($"you have used an potion +10hp {potion.HpPotion} potions left");
+                            Console.WriteLine($"{userpokemon.Name} has {userpokemon.workingHp}/{userpokemon.Hp}hp left");
+                        }
+                        else
+                        {
 
+                            Console.WriteLine($"you tried to use a potion but u had none left! {aipokemon.Name} attacks!");
+                        }
+                        return 2;
                     case 3:
                         Console.WriteLine("you have run away");
-                        isValid = false;
-                        break;
+                        return 3;
                     default:
                         Console.WriteLine("Invalid Choice");
-                        break;
+                        return 0;
                 }
             }
             while (isValid);
+        }
+
+        public void aifightphase(Pokemon aipokemon, Pokemon userpokemon, MyDbContext pokemonContext)
+        {
+            Console.WriteLine($"{aipokemon.Name} Attacks");
+            userpokemon.workingHp -= aipokemon.Attack;
+            Console.WriteLine($"{userpokemon.Name} has {userpokemon.workingHp}/{userpokemon.Hp}hp left");
+        }
+        public void fightphase(Pokemon aipokemon, Pokemon userpokemon, MyDbContext pokemonContext)
+        {
+            aipokemon.workingHp -= userpokemon.Attack;
+            Console.WriteLine($"{aipokemon.Name} has {aipokemon.workingHp}/{aipokemon.Hp}hp left");
+        }
+        public bool checkphase(Pokemon aipokemon, Pokemon userpokemon, MyDbContext pokemonContext)
+        {
+            // battle loop
+            {
+                if (aipokemon.workingHp <= 0)
+                {
+                    aipokemon.workingHp = 0;
+                    Console.WriteLine("Your Pokemon won! \nExp given +2 \n");
+                    userpokemon.Exp += 2;
+                    pokemonContext.Update(userpokemon);
+                    pokemonContext.SaveChanges();
+                    Console.WriteLine($"{userpokemon.Name} has {userpokemon.workingHp}/{userpokemon.Hp}hp left");
+                    while (true)
+                    {
+                        Console.WriteLine("do you wish to go to a pokecentre to heal? (y/n)");
+                        var choice = Console.ReadLine().Trim();
+                        if (choice.ToString().ToLower() == "y")
+                        {
+                            Console.WriteLine("your pokemon is healed to full hp");
+                            userpokemon.workingHp = userpokemon.Hp;
+                            pokemonContext.Update(userpokemon);
+                            pokemonContext.SaveChanges();
+                            return false;
+
+                        }
+                        else if (choice.ToString().ToLower() == "n")
+                        {
+                            return false;
+                        }
+                    }
+                }
+                if (userpokemon.workingHp <= 0)
+                {
+                    Console.WriteLine("your pokemon has fainted you rushed to a pokemon centre to heal them");
+                    userpokemon.workingHp = userpokemon.Hp;
+                    Console.WriteLine($"Your Pokemon Hp:{userpokemon.workingHp}");
+                }
+                return true;
 
 
+
+
+
+            }
         }
         public Pokemon setpokemon(List<string> pokemon, MyDbContext pokemonContext, List<PokemonMaster> pokemonMasters, Pokemon aipokemon)
         {
@@ -438,53 +533,6 @@ namespace PokemonPocket
                     Console.WriteLine("not in database");
                 }
         }
-        public void fightloop(Pokemon aipokemon, Pokemon userpokemon, MyDbContext pokemonContext)
-        {
-            // battle loop
-            bool fightloop = true;
-            while (fightloop)
-            {
-                fight(aipokemon, userpokemon);
-                if (aipokemon.workingHp <= 0)
-                {
-                    aipokemon.workingHp = 0;
-                    Console.WriteLine("Your Pokemon won! \nExp given +2 \n");
-                    userpokemon.Exp += 2;
-                    pokemonContext.Update(userpokemon);
-                    pokemonContext.SaveChanges();
 
-                    while (true)
-                    {
-                        Console.WriteLine("do you wish to go to a pokecentre to heal? (y/n)");
-                        var choice = Console.ReadLine().Trim();
-                        if (choice.ToString().ToLower() == "y")
-                        {
-                            Console.WriteLine("your pokemon is healed to full hp");
-                            userpokemon.workingHp = userpokemon.Hp;
-                            pokemonContext.Update(userpokemon);
-                            pokemonContext.SaveChanges();
-                            break;
-                        }
-                        else if (choice.ToString().ToLower() == "n")
-                        {
-                            break;
-                        }
-                    }
-
-
-                    fightloop = false;
-                    break;
-                }
-                Console.WriteLine($"{aipokemon.Name} attacks");
-                userpokemon.workingHp -= aipokemon.Attack;
-                if (userpokemon.workingHp <= 0)
-                {
-                    Console.WriteLine("your pokemon has fainted you rushed to a pokemon centre to heal them");
-                    userpokemon.workingHp = userpokemon.Hp;
-                }
-                Console.WriteLine($"Your Pokemon Hp:{userpokemon.workingHp}");
-            }
-
-        }
     }
 }

@@ -8,7 +8,7 @@ using PokemonPocket;
 namespace PokemonPocket.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220528162658_InitialCreate")]
+    [Migration("20220528190248_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,10 +43,6 @@ namespace PokemonPocket.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("PokemonId");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasDatabaseName("nameindex");
 
                     b.ToTable("Pokemons");
 

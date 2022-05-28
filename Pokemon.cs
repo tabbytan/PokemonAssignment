@@ -38,6 +38,12 @@ namespace PokemonPocket
             this.Hp = hp;
             this.workingHp = hp;
             this.Attack = 2 + (Exp / 5);
+            if (Hp == 0)
+            {
+                Hp = 1;
+            }
+
+
         }
         public virtual string Skill()
         {

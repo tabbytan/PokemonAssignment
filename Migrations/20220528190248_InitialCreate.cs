@@ -23,12 +23,6 @@ namespace PokemonPocket.Migrations
                 {
                     table.PrimaryKey("PK_Pokemons", x => x.PokemonId);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "nameindex",
-                table: "Pokemons",
-                column: "Name",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

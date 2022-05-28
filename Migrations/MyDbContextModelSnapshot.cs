@@ -42,10 +42,6 @@ namespace PokemonPocket.Migrations
 
                     b.HasKey("PokemonId");
 
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasDatabaseName("nameindex");
-
                     b.ToTable("Pokemons");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Pokemon");
