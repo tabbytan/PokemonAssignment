@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 // Tan wei heng 201450s
@@ -29,10 +29,12 @@ namespace PokemonPocket
 
                 Console.WriteLine("***************************************************\nWelcome to pokemon pocket App\n***************************************************");
                 Console.WriteLine("(1)Add Pokemon to my pocket");
-                Console.WriteLine("(2)List pokemon(s) in my pocket");
+                Console.WriteLine("(2)List pokemon(s) in my pocket by HP");
                 Console.WriteLine("(3)Check if i can evolve pokemon");
                 Console.WriteLine("(4)evolve pokemon");
                 Console.WriteLine("(5)Enter AI fight");
+                Console.WriteLine("(6)Wipe all pokemon");
+                Console.WriteLine("(7)Wipe by id");
 
                 Console.Write("Please only enter [1,2,3,4] or Q to quit: ");
                 var input = Console.ReadLine().Trim();
@@ -59,6 +61,16 @@ namespace PokemonPocket
                 else if (input == "5")
                 {
                     options.option5(pokemon, pokemonContext, pokemonMasters);
+                }
+                else if (input == "6")
+                {
+                    options.wipedatabase(pokemon, pokemonContext, pokemonMasters);
+                    pokemonContext.SaveChanges();
+                }
+                else if (input == "7")
+                {
+                    options.deletebyid(pokemon, pokemonContext, pokemonMasters);
+                    pokemonContext.SaveChanges();
                 }
                 else if (input.ToLower() == "q")
                 {
