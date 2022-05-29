@@ -184,22 +184,22 @@ namespace PokemonPocket
                         pokemonContext.SaveChanges();
                     }
                 }
-                else if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "charmander").Count())
+                else if (n.Name == "Charmander" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "charmander").Count())
                 {
                     Console.WriteLine($"{n.Name} ---> {n.EvolveTo}");
                     var y = pokemonContext.Pokemons.OrderByDescending(x => x.Hp).First(x => x.Name.ToLower() == "charmander");
                     y.Name = "Charmeleon";
                     y.Exp = 0;
-                    y.Hp += (y.Hp / 100) * 10;
+                    y.Hp += (y.Hp / 100) * 20;
                     pokemonContext.Update(y);
                     pokemonContext.SaveChanges();
                     for (int i = 1; i < n.NoToEvolve; i++)
                     {
-                        pokemonContext.Remove(pokemonContext.Pokemons.FirstOrDefault(x => x.Name.ToLower() == "charmander"));
+                        pokemonContext.Remove(pokemonContext.Pokemons.FirstOrDefault(x => x.Name.ToLower() == "pikachu"));
                         pokemonContext.SaveChanges();
                     }
-
                 }
+
                 //         if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "pikachu").Count())
                 //         {
                 //             for (int a = 0; a < n.NoToEvolve - 1; a++)
