@@ -1,3 +1,5 @@
+// Name: Tan Wei Heng
+// Admin:201450s
 namespace PokemonPocket
 {
     public partial class Charmander : Pokemon

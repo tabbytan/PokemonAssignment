@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-// Tan wei heng 201450s
+// Name: Tan Wei Heng
+// Admin:201450s
 namespace PokemonPocket
 {
     class Program

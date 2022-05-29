@@ -3,7 +3,8 @@ using System;
 using System.Linq;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
-
+// Name: Tan Wei Heng
+// Admin:201450s
 namespace PokemonPocket
 
 {
