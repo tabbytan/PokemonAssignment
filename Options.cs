@@ -160,14 +160,14 @@ namespace PokemonPocket
                     var y = pokemonContext.Pokemons.OrderByDescending(x => x.Hp).First(x => x.Name.ToLower() == "eevee");
                     y.Name = "Flareon";
                     y.Exp = 0;
-                    y.Hp += (y.Hp / 100) * 15;
+                    y.Hp += (y.Hp / 100) * 20;
                     pokemonContext.Update(y);
                     pokemonContext.SaveChanges();
-                    for (int i = 0; i < n.NoToEvolve; i++)
+                    for (int i = 1; i < n.NoToEvolve; i++)
                     {
-                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.Name.ToLower() == "eevee"));
+                        pokemonContext.Remove(pokemonContext.Pokemons.FirstOrDefault(x => x.Name.ToLower() == "eevee"));
+                        pokemonContext.SaveChanges();
                     }
-                    pokemonContext.SaveChanges();
                 }
                 else if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "pikachu").Count())
                 {
@@ -178,11 +178,11 @@ namespace PokemonPocket
                     y.Hp += (y.Hp / 100) * 20;
                     pokemonContext.Update(y);
                     pokemonContext.SaveChanges();
-                    for (int i = 0; i < n.NoToEvolve; i++)
+                    for (int i = 1; i < n.NoToEvolve; i++)
                     {
-                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.Name.ToLower() == "pikachu"));
+                        pokemonContext.Remove(pokemonContext.Pokemons.FirstOrDefault(x => x.Name.ToLower() == "pikachu"));
+                        pokemonContext.SaveChanges();
                     }
-                    pokemonContext.SaveChanges();
                 }
                 else if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonContext.Pokemons.Where(x => x.Name.ToLower() == "charmander").Count())
                 {
@@ -193,11 +193,12 @@ namespace PokemonPocket
                     y.Hp += (y.Hp / 100) * 10;
                     pokemonContext.Update(y);
                     pokemonContext.SaveChanges();
-                    for (int i = 0; i < n.NoToEvolve; i++)
+                    for (int i = 1; i < n.NoToEvolve; i++)
                     {
-                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.Name.ToLower() == "charmander"));
+                        pokemonContext.Remove(pokemonContext.Pokemons.FirstOrDefault(x => x.Name.ToLower() == "charmander"));
+                        pokemonContext.SaveChanges();
                     }
-                    pokemonContext.SaveChanges();
+
                 }
                 //         if (n.Name == "Pikachu" && n.NoToEvolve <= pokemonlist.Where(x => x.Name.ToLower() == "pikachu").Count())
                 //         {

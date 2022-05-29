@@ -37,7 +37,7 @@ namespace PokemonPocket
                 Console.WriteLine("(6)Wipe all pokemon");
                 Console.WriteLine("(7)Wipe by id");
 
-                Console.Write("Please only enter [1,2,3,4] or Q to quit: ");
+                Console.Write("Please only enter [1,2,3,4,5,6,7] or Q to quit: ");
                 var input = Console.ReadLine().Trim();
 
                 if (input == "1")
