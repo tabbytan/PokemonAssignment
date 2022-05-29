@@ -351,6 +351,7 @@ namespace PokemonPocket
                 catch
                 {
                     Console.WriteLine("not in database");
+                    break;
                 }
             }
         }
