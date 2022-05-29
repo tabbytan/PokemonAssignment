@@ -334,24 +334,31 @@ namespace PokemonPocket
             int output;
             while (true)
             {
-                try
+                if (!pokemonContext.Pokemons.Any())
                 {
-                    sortbyid(pokemon, pokemonContext, pokemonMasters);
-                    do
-                    {
-                        Console.WriteLine("Enter ID: ");
-                        ans = Console.ReadLine().Trim();
-                    }
-                    while (!int.TryParse(ans, out output));
-                    pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.PokemonId == output));
-                    Console.WriteLine("your pokemon has been deleted");
-                    break;
+                    Console.WriteLine("no pokemon exists go make one");
                 }
-
-                catch
+                else
                 {
-                    Console.WriteLine("not in database");
-                    break;
+                    try
+                    {
+                        sortbyid(pokemon, pokemonContext, pokemonMasters);
+                        do
+                        {
+                            Console.WriteLine("Enter ID: ");
+                            ans = Console.ReadLine().Trim();
+                        }
+                        while (!int.TryParse(ans, out output));
+                        pokemonContext.Remove(pokemonContext.Pokemons.First(x => x.PokemonId == output));
+                        Console.WriteLine("your pokemon has been deleted");
+                        break;
+                    }
+
+                    catch
+                    {
+                        Console.WriteLine("not in database");
+                        break;
+                    }
                 }
             }
         }
